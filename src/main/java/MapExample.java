@@ -7,6 +7,12 @@ import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+/*╔═════════════════════════════════════════════╗
+  ║                    MAP                      ║
+  ╠═════════════════════════════════════════════╣
+  ║ Apply Function/Lambda in the Stream Element ║
+  ║       RETURN the elements as Stream         ║
+  ╚═════════════════════════════════════════════╝*/
 public class MapExample {
   public static void main(String[] args) {
 

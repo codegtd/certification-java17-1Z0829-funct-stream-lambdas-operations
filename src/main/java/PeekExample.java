@@ -4,6 +4,12 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+/*╔═══════════════════════════════════╗
+  ║               PEEK                ║
+  ╠═══════════════════════════════════╣
+  ║ USES or CHANGE the Stream Element ║
+  ║               VOID                ║
+  ╚═══════════════════════════════════╝*/
 public class PeekExample {
   public static void main(String[] args) {
     List<Student> myList = Stream.generate(Student::new)
