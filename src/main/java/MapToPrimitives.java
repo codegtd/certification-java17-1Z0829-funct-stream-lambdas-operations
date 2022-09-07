@@ -1,6 +1,12 @@
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
+/*╔════════════════════════════════════════╗
+  ║   MAPtoINT - MAPtoDOUBLE - MAPtoLONG   ║
+  ╠════════════════════════════════════════╣
+  ║         CONVERT a "Stream" in          ║
+  ║  Stream of Primitive [Int/Double/Long] ║
+  ╚════════════════════════════════════════╝*/
 public class MapToPrimitives {
   public static void main(String[] args) {
 
@@ -9,7 +15,7 @@ public class MapToPrimitives {
              .limit(3)
              .map((s) -> s * 1000)
              // COMPILE-ERROR:
-             // 1) .mapToInt is NOT AVAILABLE in "IntStream"
+             // 1) "IntStream" does not support ".mapToInt"
              // .mapToInt((s) -> s * 1000)
              .forEach((s) -> show(s + " "));
 
@@ -19,9 +25,10 @@ public class MapToPrimitives {
           .mapToInt((s) -> s * 1000)
           .map((s) -> s * 1000)
           // COMPILE-ERROR:
-          // 1) .mapToInt is in "Stream<Integer>"
-          // 2) .mapToInt converted: "Stream<Integer>" to "IntStream"
-          // 3) .mapToInt 'NOW' is NOT AVAILABLE in "IntStream"
+          // 1) .mapToInt is supported by "Stream<Integer>"
+          // 2) .mapToInt is AVAILABLE
+          // 3) .mapToInt converted "Stream<Integer>" in "IntStream"
+          // 4) "IntStream"(converted) does not support ".mapToInt"
           // .mapToInt((s) -> s * 1000)
           .forEach((s) -> show(s + " "));
   }

@@ -2,8 +2,6 @@ import entity.Student;
 
 import java.util.AbstractMap;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -13,7 +11,7 @@ import java.util.stream.Stream;
   ║ Apply Function/Lambda in the Stream Element ║
   ║       RETURN the elements as Stream         ║
   ╚═════════════════════════════════════════════╝*/
-public class MapExample {
+public class Map {
   public static void main(String[] args) {
 
     List<Student> list1 =
@@ -24,7 +22,7 @@ public class MapExample {
 
     List<Student> changedList =
          list1.stream()
-              .map(MapExample::changeAndReturnStudent)
+              .map(Map::changeAndReturnStudent)
               .map(element -> {
                 show("Student pos Map: " + element.getName());
                 return element;
@@ -45,7 +43,7 @@ public class MapExample {
     return p;
   }
 
-  private static Map.Entry<Integer, Student> mapStudent(Student p) {
+  private static java.util.Map.Entry<Integer, Student> mapStudent(Student p) {
 
     return new AbstractMap.SimpleEntry<Integer, Student>(p.getStudentId(), p);
   }
