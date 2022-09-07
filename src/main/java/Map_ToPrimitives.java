@@ -7,7 +7,7 @@ import java.util.stream.Stream;
   ║         CONVERT a "Stream" in          ║
   ║  Stream of Primitive [Int/Double/Long] ║
   ╚════════════════════════════════════════╝*/
-public class MapToPrimitives {
+public class Map_ToPrimitives {
   public static void main(String[] args) {
 
     System.out.println("Output IntStream using map");
