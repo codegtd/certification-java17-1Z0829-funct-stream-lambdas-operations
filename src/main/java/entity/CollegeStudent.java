@@ -1,6 +1,8 @@
 package entity;
 
-import lombok.*;
+import lombok.Getter;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
 
 import java.util.Optional;
 
@@ -12,20 +14,25 @@ public class CollegeStudent {
   private String name;
 
   private Optional<Float> gpa = Optional.empty();
+  //  private Float gpa;
 
 
   public CollegeStudent(String name, float gpa) {
+
     this.name = name;
+    //    this.gpa = gpa;
     this.gpa = Optional.of(gpa);
   }
 
   public Optional<Float> getGpa() {
+    //  public Float getGpa() {
 
     return gpa;
   }
 
   public void setGpa(Float gpa) {
 
+    //    this.gpa = gpa;
     this.gpa = Optional.ofNullable(gpa);
   }
 }
