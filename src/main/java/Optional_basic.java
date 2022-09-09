@@ -3,7 +3,7 @@ import entity.CollegeStudent;
 import java.util.List;
 import java.util.Optional;
 
-public class OptionalExample {
+public class Optional_basic {
   public static void main(String[] args) {
 
     CollegeStudent joe = new CollegeStudent("Joe", 3.2f);
@@ -25,7 +25,7 @@ public class OptionalExample {
         .forEach(student -> show(
              student.getName() +
                   (student.getGpa()
-                          .orElseGet(OptionalExample::getGpaEstimate)
+                          .orElseGet(Optional_basic::getGpaEstimate)
                        >= 2.0f ? " good-stand" : " acad-prob")));
 
     showGpas(joe, jane);

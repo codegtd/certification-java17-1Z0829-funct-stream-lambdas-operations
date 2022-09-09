@@ -1,8 +1,10 @@
+package map_flatmap;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class FlatMap_basics {
+public class FlatMap_basic {
   public static void main(String[] args) {
     List<Integer> mapExampleList = Arrays.asList(1, 2, 3);
 

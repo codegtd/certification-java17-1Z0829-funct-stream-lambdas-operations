@@ -1,3 +1,5 @@
+package map_flatmap;
+
 import entity.Client;
 import entity.ClientsList;
 
@@ -7,7 +9,7 @@ import java.util.stream.Collectors;
 public class Map_Vs_FlatMap {
   public static void main(String[] args) {
 
-    List<Client> clients = ClientsList.getAll();
+    List<Client> clients = ClientsList.getAllClients();
 
 /*╔═════════════════════════════════════════════════════════════════╗
   ║                 MAP METHOD - EXAMPLE 01                         ║

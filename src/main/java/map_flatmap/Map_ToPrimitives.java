@@ -1,3 +1,5 @@
+package map_flatmap;
+
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 

@@ -1,3 +1,5 @@
+package map_flatmap;
+
 import entity.Student;
 
 import java.util.AbstractMap;
@@ -11,7 +13,7 @@ import java.util.stream.Stream;
   ║ Apply Function/Lambda in the Stream Element ║
   ║       RETURN the elements as Stream         ║
   ╚═════════════════════════════════════════════╝*/
-public class Map {
+public class Map_basic {
   public static void main(String[] args) {
 
     List<Student> list1 =
@@ -22,7 +24,7 @@ public class Map {
 
     List<Student> changedList =
          list1.stream()
-              .map(Map::changeAndReturnStudent)
+              .map(Map_basic::changeAndReturnStudent)
               .map(element -> {
                 show("Student pos Map: " + element.getName());
                 return element;
