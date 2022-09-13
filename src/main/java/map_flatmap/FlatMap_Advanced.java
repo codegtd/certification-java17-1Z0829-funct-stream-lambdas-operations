@@ -6,7 +6,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class FlatMap_advanced {
+public class FlatMap_Advanced {
   public static void main(String[] args) {
 
     Map<String, List<String>> students = new HashMap<>();

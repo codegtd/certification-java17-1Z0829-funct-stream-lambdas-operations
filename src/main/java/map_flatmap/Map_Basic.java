@@ -13,7 +13,7 @@ import java.util.stream.Stream;
   ║ Apply Function/Lambda in the Stream Element ║
   ║       RETURN the elements as Stream         ║
   ╚═════════════════════════════════════════════╝*/
-public class Map_basic {
+public class Map_Basic {
   public static void main(String[] args) {
 
     List<Student> list1 =
@@ -24,7 +24,7 @@ public class Map_basic {
 
     List<Student> changedList =
          list1.stream()
-              .map(Map_basic::changeAndReturnStudent)
+              .map(Map_Basic::changeAndReturnStudent)
               .map(element -> {
                 show("Student pos Map: " + element.getName());
                 return element;

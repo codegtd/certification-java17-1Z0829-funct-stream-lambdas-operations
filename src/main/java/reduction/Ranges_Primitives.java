@@ -1,4 +1,4 @@
-package reductions;
+package reduction;
 
 import java.util.*;
 import java.util.stream.DoubleStream;
