@@ -3,9 +3,11 @@ package entity;
 import lombok.Getter;
 import lombok.ToString;
 
+import java.util.List;
 import java.util.Random;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
-@ToString
 public class Pet {
 
   // Set up test data for grouping tests
@@ -33,7 +35,7 @@ public class Pet {
 
   public Pet() {
     // Use streaming skills to get 6 random #'s between 0 & 7
-    int[] randoms =
+    int[] random =
          new Random()
               .ints(0, 8)
               .limit(6)
@@ -41,11 +43,30 @@ public class Pet {
 
     // Populate Pet with randomly selected data
     int i = 0;
-    this.name = namesArray[randoms[i++]];
-    this.type = typesArray[randoms[i++]];
-    this.state = statesArray[randoms[i++]];
-    this.owner = ownerArray[randoms[i++]];
-    this.vet = vetArray[randoms[i++]];
-    this.age = randoms[i++];
+    this.name = namesArray[random[i++]];
+    this.type = typesArray[random[i++]];
+    this.state = statesArray[random[i++]];
+    this.owner = ownerArray[random[i++]];
+    this.vet = vetArray[random[i++]];
+    this.age = random[i++];
+  }
+
+  public String toString() {
+    return "Pet{" +
+         "name='" + name + '\'' +
+         ", type='" + type + '\'' +
+         ", owner='" + owner + '\'' +
+         ", vet='" + vet + '\'' +
+         ", state='" + state + '\'' +
+         ", age=" + age +
+         '}';
+  }
+
+  public static List<Pet> getPets() {
+
+    List<Pet> petPopulation = Stream.generate(Pet::new)
+                                    .limit(100)
+                                    .collect(Collectors.toList());
+    return petPopulation;
   }
 }
