@@ -1,6 +1,5 @@
 package collector;
 
-import entity.Pet;
 import entity.PetTim;
 
 import java.util.List;
@@ -33,7 +32,27 @@ public class Collector_toMap_GroupBy {
                       Collectors
                            .groupingBy(
                                 p -> p.getType() + "Custom"
-//                                PetTim::getType
+                           ))
+                 .entrySet()
+                 .stream()
+                 .forEach(System.out::println);
+
+
+/*╔═════════════════════════════════════════════════════════╗
+  ║               COLLECTOR CASCADE-GROUP_BY                ║
+  ╠═════════════════════════════════════════════════════════╣
+  ║1) Relation:  ONE -> MANY                                ║
+  ║1.1) Map<K,                                              ║
+  ║            Map<K, List<V>>                              ║
+  ║        >                                                ║
+  ║1.2) Allow Duplicities in List<V>                        ║
+  ╚═════════════════════════════════════════════════════════╝*/
+    System.out.println("\n2) CASCADE GROUP_BY - 2 ARG's");
+    petPopulation.stream()
+                 .collect(
+                      Collectors
+                           .groupingBy(PetTim::getType,
+                                Collectors.groupingBy(PetTim::getAge)
                            ))
                  .entrySet()
                  .stream()
@@ -48,7 +67,7 @@ public class Collector_toMap_GroupBy {
   ║1.2) PROBLEM: "NOT-ALLOW" Duplic's in <K> (Unique)        ║
   ║     SOLUTION: a)Distinct; b)Unique-Key to avoid Duplic's ║
   ╚══════════════════════════════════════════════════════════╝*/
-    System.out.println("\n2) TO_MAP - 2 ARGs");
+    System.out.println("\n3) TO_MAP - 2 ARGs");
     petPopulation.stream()
                  .distinct()
                  .collect(
@@ -65,35 +84,35 @@ public class Collector_toMap_GroupBy {
                  .forEach(System.out::println);
 
 
-    System.out.println("\n3) GROUP_BY - 1 ARG - TREE_MAP");
+    System.out.println("\n4) GROUP_BY - 1 ARG - TREE_MAP (instead Map)");
     petPopulation
-         .stream()
-            .collect(
-                 Collectors
-                      .groupingBy(
-                           PetTim::getType,
-                           TreeMap::new,
-                           Collectors.toList()))
-            .entrySet()
-            .stream()
-            .forEach(System.out::println);
+     .stream()
+        .collect(
+             Collectors
+                  .groupingBy(
+                       PetTim::getType,
+                       TreeMap::new,
+                       Collectors.toList()))
+        .entrySet()
+        .stream()
+        .forEach(System.out::println);
 
 
-    System.out.println("\n4) TO_MAP - 2 ARG's - TREE_MAP");
+    System.out.println("\n5) TO_MAP - 2 ARG's - TREE_MAP (instead Map)");
     petPopulation
-         .stream()
-            .distinct()
-            .collect(
-                 Collectors
-                      .toMap(
-                          p -> p.getType() + "_" + p.getName(),
-                          p -> p,
-                          // merge function ignored if not parallel
-                          (existing, replacement) -> existing,
-                          TreeMap::new))
-            .entrySet()
-            .stream()
-            .forEach(System.out::println);
+     .stream()
+        .distinct()
+        .collect(
+             Collectors
+                  .toMap(
+                      p -> p.getType() + "_" + p.getName(),
+                      p -> p,
+                      // merge function ignored if not parallel
+                      (existing, replacement) -> existing,
+                      TreeMap::new))
+        .entrySet()
+        .stream()
+        .forEach(System.out::println);
 
   }
 }

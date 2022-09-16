@@ -1,8 +1,9 @@
 package map_flatmap;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import entity.Pet;
+import entity.PetTim;
+
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -44,5 +45,31 @@ public class FlatMap_Advanced {
       System.out.println(phones);
     }
 
-  }
+/*╔═════════════════════════════════════════════════════════╗
+  ║               MAP BEING USED AS FLAT_MAP                ║
+  ╚═════════════════════════════════════════════════════════╝*/
+    List<PetTim> petList1 = List.of(new PetTim(), new PetTim());
+    List<PetTim> petList2 = List.of(new PetTim(), new PetTim());
+    List<List<PetTim>> matrix_of_lists_ListOfLists = List.of(petList1, petList2);
+
+    matrix_of_lists_ListOfLists.forEach(System.out::println);
+
+    System.out.println("\n--- Faking FlatMap using Map ---");
+    List<PetTim> list1 = new ArrayList<PetTim>();
+    matrix_of_lists_ListOfLists
+       .stream()
+       .map(s -> list1.addAll(s))
+       .allMatch(p -> p != null);
+    list1.forEach(System.out::println);
+
+    System.out.println("\n--- Classic flatMap Variations---");
+    matrix_of_lists_ListOfLists
+      .stream()
+         // .flatMap(s -> s.stream())  //   Work|flats: List<Pet>
+         .flatMap(Collection::stream)  //   Work|flats: List<Pet>
+         // .flatMap(Stream::of)       //No Work|No flats: List<List<Pet>>
+         .collect(Collectors.toList())
+         .forEach(System.out::println);
+
+ }
 }
