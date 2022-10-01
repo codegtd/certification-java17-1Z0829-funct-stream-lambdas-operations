@@ -52,13 +52,13 @@ public class Pet {
   }
 
   public String toString() {
-    return "Pet{" +
+    return "\nPet{" +
          "name='" + name + '\'' +
          ", type='" + type + '\'' +
-         ", owner='" + owner + '\'' +
+//         ", owner='" + owner + '\'' +
          ", vet='" + vet + '\'' +
          ", state='" + state + '\'' +
-         ", age=" + age +
+//         ", age=" + age +
          '}';
   }
 

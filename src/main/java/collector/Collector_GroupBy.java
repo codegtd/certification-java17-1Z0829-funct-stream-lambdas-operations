@@ -15,7 +15,12 @@ public class Collector_GroupBy {
     List<Pet> petPopulation = getPets();
 
 
-    //GROUP-01-ATTRIB + COUNT
+    //GROUP-01: 01 ATTRIBUTE + COUNT
+    show("""
+              GROUP-01:
+              +TABLE: TYPE | TOTAL-TYPE:
+               * ATTRIB/COLUMN 1: PetType
+               *        COLUMN 2: TOTAL-BY-TYPE""");
     getPets()
          .stream()
          .collect(Collectors
@@ -27,10 +32,13 @@ public class Collector_GroupBy {
          .forEach(System.out::println);
 
 
-    show("--- Counts by State, PetType: ---");
-
-
-    //GROUP-02-ATTRIB + COUNT
+    show("""
+              GROUP-02:
+              +TABLE: STATE | TYPE-BY-STATE | TOTAL:
+               * ATTRIB/COLUMN 1: State
+               * ATTRIB/COLUMN 2: Type
+               *        COLUMN 3: TOTAL-TYPE-BY-STATE""");
+    //GROUP-02: 02 ATTRIBUTES + COUNT
     getPets()
              .stream()
              .collect(Collectors
