@@ -1,6 +1,8 @@
 package map_flatmap;
 
+import java.util.stream.DoubleStream;
 import java.util.stream.IntStream;
+import java.util.stream.LongStream;
 import java.util.stream.Stream;
 
 /*╔════════════════════════════════════════╗
@@ -12,6 +14,9 @@ import java.util.stream.Stream;
 public class Map_ToPrimitives {
   public static void main(String[] args) {
 
+/*╔════════════════════════════════════════╗
+  ║               MAPtoINT                 ║
+  ╚════════════════════════════════════════╝*/
     System.out.println("Output IntStream using map");
     IntStream.iterate(5, (t) -> t + 5)
              .limit(3)
@@ -33,6 +38,30 @@ public class Map_ToPrimitives {
           // 4) "IntStream"(converted) does not support ".mapToInt"
           // .mapToInt((s) -> s * 1000)
           .forEach((s) -> show(s + " "));
+
+/*╔════════════════════════════════════════╗
+  ║             MAPtoDOUBLE                ║
+  ╚════════════════════════════════════════╝*/
+    System.out.println("Output IntStream using map");
+    DoubleStream.iterate(5, (t) -> t + 5)
+                .limit(3)
+                .map((s) -> s * 1000.0)
+                // COMPILE-ERROR:
+                // 1) "DoubleStream" does not support ".mapToDouble"
+//                .mapToDouble((s) -> s * 1000)
+                .forEach((s) -> show(s + " "));
+
+/*╔════════════════════════════════════════╗
+  ║               MAPtoLONG                ║
+  ╚════════════════════════════════════════╝*/
+    System.out.println("Output IntStream using map");
+    LongStream.iterate(5L, (t) -> t + 5L)
+              .limit(3)
+              .map((s) -> s * 1000L)
+              // COMPILE-ERROR:
+              // 1) "DoubleStream" does not support ".mapToDouble"
+//              .mapToLong((s) -> s * 10L)
+              .forEach((s) -> show(s + " "));
   }
 
   private static void show(String element) {
